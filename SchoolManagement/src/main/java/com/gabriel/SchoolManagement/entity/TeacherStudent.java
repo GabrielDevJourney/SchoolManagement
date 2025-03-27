@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "teacher_students", uniqueConstraints = {
+@Table(uniqueConstraints = {
 		@UniqueConstraint(columnNames = {"student_id", "subject_id"})})
 public class TeacherStudent {
 

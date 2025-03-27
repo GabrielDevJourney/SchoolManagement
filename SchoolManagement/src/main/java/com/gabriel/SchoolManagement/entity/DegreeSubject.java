@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table
 public class DegreeSubject {
 
 	@Id
@@ -22,4 +23,8 @@ public class DegreeSubject {
 	@ManyToOne
 	@JoinColumn(name = "subject_id")
 	private Subject subject;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "teacher_id")
+	private Teacher teacher;
 }

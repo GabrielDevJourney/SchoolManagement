@@ -12,7 +12,7 @@ import java.time.Year;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "degrees")
+@Table
 public class Degree {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
