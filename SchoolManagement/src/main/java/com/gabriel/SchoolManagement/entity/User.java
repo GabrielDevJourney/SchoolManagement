@@ -6,6 +6,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 
 @Data
@@ -13,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +35,7 @@ public class User {
 	private String email;
 
 	@Column(nullable = false)
-	private java.time.LocalDate birthDate;
+	private LocalDate birthDate;
 
 	@Column(nullable = false, unique = true)
 	private String username;
@@ -42,4 +48,8 @@ public class User {
 	private RoleType role;
 
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of();
+	}
 }

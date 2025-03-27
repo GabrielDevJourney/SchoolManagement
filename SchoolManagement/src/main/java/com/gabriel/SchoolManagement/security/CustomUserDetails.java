@@ -1,5 +1,6 @@
 package com.gabriel.SchoolManagement.security;
 
+import com.gabriel.SchoolManagement.exception.user.UserNotFoundException;
 import com.gabriel.SchoolManagement.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +17,6 @@ public class CustomUserDetails implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		return userRepository.findUserByEmail(email).orElseThrow(() -> new UserNotFoundException());
+		return userRepository.findUserByEmail(email).orElseThrow(UserNotFoundException::new);
 	}
 }
